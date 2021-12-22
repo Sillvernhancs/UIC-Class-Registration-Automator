@@ -6,6 +6,16 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException  
 import time
+#///////////////////////////////
+# out look extension
+import win32com.client
+import os
+from datetime import datetime, timedelta
+outlook = win32com.client.Dispatch('outlook.application')
+mapi = outlook.GetNamespace("MAPI")
+inbox = mapi.GetDefaultFolder(6)
+messages = inbox.Items
+
 #/////////////////////////////////////////////////////////////////////
 def check_xpath(xpath, browser_):
     try:
@@ -29,7 +39,7 @@ while True:
     CRN = input("Enter your CRN #: ")
     if CRN == '#' : 
         if len(CRNS) < 1:
-            print('has to have atleast 1 CRN')
+            print('has to have more than 1 CRN')
             continue
         break
     try :
