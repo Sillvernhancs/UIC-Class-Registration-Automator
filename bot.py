@@ -59,7 +59,8 @@ browser.find_element(By.NAME,'password').send_keys(password)
 # (also check if log in was successful)
 try :
     browser.find_element(By.XPATH,'/html/body/div[2]/form/button').click()
-    browser.find_element(By.XPATH,'//*[@id="Pluto_391_u29l1n396_6804_app"]/div/a').click()
+    browser.find_element(By.ID,'Pluto_391_u29l1n396_12414_app').click()
+    #//*[@id="Pluto_391_u29l1n396_12414_app"]/div/a/div/span[1]
 except:
     print('Login failed, restart and try again')
     input('Press enter...')
