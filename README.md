@@ -5,5 +5,5 @@ Make sure to have installed Python before hand
 
 -  Enter netID and password (promise no sussy bussiness)
 
--  Enter CRNS, must be more than 1 class, use # finish.
+-  Enter CRNS, must be more than 1 class, use # to finish.
 
