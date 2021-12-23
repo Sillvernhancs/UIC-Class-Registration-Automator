@@ -1,10 +1,10 @@
 from selenium import webdriver
-from selenium.webdriver.common import by
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common import by
+from selenium.common.exceptions import NoSuchElementException  
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from selenium.common.exceptions import NoSuchElementException  
 import time
 #/////////////////////////////////////////////////////////////////////
 def check_xpath(xpath, browser_):
