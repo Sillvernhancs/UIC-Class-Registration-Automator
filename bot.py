@@ -66,7 +66,7 @@ except:
     browser.close()
     exit(1)
 print('Login successful')
-
+# click onto the registration link.
 browser.find_element(By.XPATH,"//*[contains(text(), 'Registration/View Classes -  XE Registration')]").click()
 # switch to registration tab and click registration
 browser.implicitly_wait(10)

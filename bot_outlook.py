@@ -39,7 +39,7 @@ while True:
     CRN = input("Enter your CRN #: ")
     if CRN == '#' : 
         if len(CRNS) < 1:
-            print('has to have more than 1 CRN')
+            print('has to have atleast 1 CRN')
             continue
         break
     try :
@@ -69,13 +69,15 @@ browser.find_element(By.NAME,'password').send_keys(password)
 # (also check if log in was successful)
 try :
     browser.find_element(By.XPATH,'/html/body/div[2]/form/button').click()
-    browser.find_element(By.XPATH,'//*[@id="Pluto_391_u29l1n396_6804_app"]/div/a').click()
+    #//*[@id="Pluto_391_u29l1n396_12414_app"]/div/a/div/span[1]
 except:
     print('Login failed, restart and try again')
     input('Press enter...')
     browser.close()
     exit(1)
 print('Login successful')
+# click onto the registration link.
+browser.find_element(By.XPATH,"//*[contains(text(), 'Registration/View Classes -  XE Registration')]").click()
 # switch to registration tab and click registration
 browser.implicitly_wait(10)
 reg = browser.window_handles[1]
