@@ -1,4 +1,4 @@
-**UIC Class Yoinker v1.1.0**
+**UIC Class Yoinker v1.1.0 is out!**
 
 -  added batch files to automatically installs package.
 -  added outlook support
