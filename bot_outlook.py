@@ -9,14 +9,16 @@ import time
 #/////////////////////////////////////////////////////////////////////
 import win32com.client
 # /////////////////////////////////////////////////////////////////////
-# Initiate the browser
-# get user credentials
-print("/////////////////////////////////")
-netID    = input("NetID   : ")
-password = input("Password: ")
-print("/////////////////////////////////")
-def registrer(CRN_num):
-    #start the browser
+# Helper functions
+# close all tabs
+def closeAllTabs(brwsr):
+    for handle in brwsr.window_handles:
+        brwsr.switch_to.window(handle)
+        brwsr.close()
+#check login
+def login(netID, password):
+    print('Trying to login....')
+    print('___________________')
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -36,14 +38,37 @@ def registrer(CRN_num):
     # (also check if log in was successful)
     try :
         browser.find_element(By.XPATH,'/html/body/div[2]/form/button').click()
-        #//*[@id="Pluto_391_u29l1n396_12414_app"]/div/a/div/span[1]
+        browser.find_element(By.XPATH,"//*[contains(text(), 'Registration/View Classes -  XE Registration')]").click()
     except:
-        print('Login failed, restart and try again')
-        input('Press enter...')
-        browser.close()
-        exit(1)
+        closeAllTabs(browser)
+        print('Login failed, restart and try again...')
+        time.sleep(4)
+        exit()
     print('Login successful')
-    # click onto the registration link.
+    print('___________________')
+    time.sleep(.5)
+    closeAllTabs(browser)
+# /////////////////////////////////////////////////////////////////////
+# Initiate the browser
+def registrer(CRN_num, netID, password):
+    #start the browser
+    chrome_options = Options()
+    chrome_options.add_experimental_option("detach", True)
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    service_ = Service("chromedriver.exe")
+    browser = webdriver.Chrome(service=service_, options=chrome_options)
+
+    browser.set_window_size(1080,1080)
+    browser.get('https://my.uic.edu/uPortal/f/welcome/normal/render.uP')
+    # navigate to the login button in my.uic.edu
+    browser.find_element(By.XPATH,'/html/body/div/div[2]/header/div[1]/div/div/section/div/div/div/div/a').click()
+    browser.find_element(By.XPATH,'/html/body/div/main/div/form/fieldset/div/p[1]/input').click()
+    browser.find_element(By.XPATH,'/html/body/div/main/div/form/input[1]').click()
+    # log in (assumne that the login() function was ran before this and has comfirmed that the credientials works)
+    browser.find_element(By.NAME,'UserID').send_keys(netID)
+    browser.find_element(By.NAME,'password').send_keys(password)
+    # select the school and submit
+    browser.find_element(By.XPATH,'/html/body/div[2]/form/button').click()
     browser.find_element(By.XPATH,"//*[contains(text(), 'Registration/View Classes -  XE Registration')]").click()
     # switch to registration tab and click registration
     browser.implicitly_wait(10)
@@ -54,7 +79,6 @@ def registrer(CRN_num):
     browser.find_element(By.XPATH, '//*[@id="IdPList"]/input[1]').click()
     browser.find_element(By.XPATH, '//*[@id="s2id_txt_term"]').click()
     browser.implicitly_wait(100)
-    # browser.find_element(By.XPATH, '//*[@id="s2id_autogen1_search"]').send_keys(Keys.ENTER)
     browser.find_element(By.XPATH, '/html/body/div[8]/ul/li[1]/div').click()
     browser.find_element(By.XPATH, '//*[@id="term-go"]').click()
     browser.find_element(By.XPATH, '//*[@id="enterCRNs-tab"]').click()
@@ -62,18 +86,25 @@ def registrer(CRN_num):
     crn_txt = '//*[@id="txt_crn1"]'
     #input CRN_num from the passed in
     browser.find_element(By.XPATH, crn_txt).send_keys(str(CRN_num[1:]))
-    #submit
-    browser.find_element(By.XPATH, '//*[@id="addCRNbutton"]').click()
-
-    # uncomment the line down below to actually submit it. or do it yourself
-    browser.find_element(By.ID, 'saveButton').click()
-
+    try:
+        #submit
+        browser.find_element(By.XPATH, '//*[@id="addCRNbutton"]').click()
+        # uncomment the line down below to actually submit it. or do it yourself
+        browser.find_element(By.ID, 'saveButton').click()
+        print('Yoinked successfully')
+    except:
+        print('Something went wrong with the CRN: ' + str(CRN_num[1:]))
+        print('Please check manually...')
     # Close all tabs when done
-    for handle in browser.window_handles:
-        browser.switch_to.window(handle)
-    browser.close()
+    closeAllTabs(browser)
 #/////////////////////////////////////////////////////////////////////
-# Loop 
+# Main:... 
+# get user credentials
+print("/////////////////////////////////")
+netID    = input("NetID   : ")
+password = input("Password: ")
+print("/////////////////////////////////")
+login(netID, password)
 print('Waiting for a CRN notification...')
 while True:
     ol = win32com.client.Dispatch( "Outlook.Application")
@@ -85,7 +116,7 @@ while True:
         message_current.UnRead = False
         CRN = message_current.Body[message_current.Body.find('(CRN: ') + 5:message_current.Body.find('(CRN: ') + 11]
         print ('Adding CRN: ' + CRN)
-        registrer(CRN)
+        registrer(CRN, netID, password)
     time.sleep(5)
 
 
