@@ -65,13 +65,12 @@ def registrer(CRN_num):
     # string manipulation for each CRN text field
     crn_txt = '//*[@id="txt_crn1"]'
     #input CRN_num from the passed in
-    print('|' + str(CRN_num[1:]) + '|')
     browser.find_element(By.XPATH, crn_txt).send_keys(str(CRN_num[1:]))
     #submit
     browser.find_element(By.XPATH, '//*[@id="addCRNbutton"]').click()
 
     # uncomment the line down below to actually submit it. or do it yourself
-    browser.find_element(By.ID, 'saveButton').click()\
+    browser.find_element(By.ID, 'saveButton').click()
 
     # Close all tabs when done
     for handle in browser.window_handles:
