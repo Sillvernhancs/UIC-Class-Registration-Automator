@@ -2,8 +2,7 @@
 
 -  added batch files to automatically installs package.
 -  added outlook support
-
-**How to use :**
+## **How to use :**
 -  Make sure to have installed python (the one from windows store is recommended)
 -  Make sure to have install outlook (for the people that works in the school and have to use outlook as their UIC mail)
 -  Make sure that outlook is running before running the bot. (Use the minimize when close options to put Outlook away and still running)
@@ -15,5 +14,5 @@
         - time conflict
         - not sure, if anything else goes wrong report to issues, ty.  
 
-Other versions here:
+#### Other versions here:
 https://github.com/Sillvernhancs/UIC-class-yoinker/releases
