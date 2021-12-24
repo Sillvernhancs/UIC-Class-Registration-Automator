@@ -1,7 +1,7 @@
 # **UIC Class Yoinker v1.1.0 is out!**
 **NOTE:**
 -  v1.1.0 is the outlook version. Gmail version coming soon
--  The normal version where you enter CRN manually is v1.0.1 in the other version section.
+-  The normal version where you enter CRN manually is v1.0.1 in the "other versions" section.
 ## **Updates**
 -  added batch files to automatically installs package.
 -  added outlook support
