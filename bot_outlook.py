@@ -8,10 +8,6 @@ from selenium.webdriver.chrome.service import Service
 import time
 #/////////////////////////////////////////////////////////////////////
 import win32com.client
-import ctypes # for the VM_QUIT to stop PumpMessage()
-import pythoncom
-import re
-import psutil
 # /////////////////////////////////////////////////////////////////////
 # Initiate the browser
 # get user credentials
