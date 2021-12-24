@@ -14,3 +14,6 @@
         - just a wait list
         - time conflict
         - not sure, if anything else goes wrong report to issues, ty.  
+
+Other versions here:
+https://github.com/Sillvernhancs/UIC-class-yoinker/releases
