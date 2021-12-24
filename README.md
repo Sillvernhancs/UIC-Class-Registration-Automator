@@ -1,5 +1,5 @@
 # **UIC Class Yoinker v1.1.0 is out!**
-
+NOTE: v1.1.0 is the outlook version. Gmail version coming soon
 -  added batch files to automatically installs package.
 -  added outlook support
 ## **How to use :**
