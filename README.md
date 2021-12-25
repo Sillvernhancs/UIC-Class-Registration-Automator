@@ -1,8 +1,9 @@
-## **UIC Class Yoinker v1.1.1**
-
+# **UIC Class Yoinker v1.1.0 (Gmail/Outlook) is out!**
+## **Updates**
 -  added batch files to automatically installs package.
--  added Gmail support alongside Outlook from previous the previous version
-
+-  added Gmail and Outlook support
+#### All versions:
+https://github.com/Sillvernhancs/UIC-class-yoinker/releases
 ## **How to use the bot wit Gmail:**
 
 -  Head to [Google App Password](https://myaccount.google.com/apppasswords)
@@ -21,8 +22,10 @@
     -  Always have to keep running in the background
 -  Run 'run_outlook.bat' and type in your NetID and password
 -  Leave it there. Once it ran, the moment you receive an open seat notification it will automatically grab that seat for you.
-## **If there was a message saying something went wrong with the CRN: 
+## **If there was a message saying something went wrong with the CRN:**
 -  common ones are : 
-        - just a wait list
-        - time conflict
-        - not sure, if anything else goes wrong report to issues, ty.  
+   -  just a wait list
+   -  time conflict
+   -  not sure, if anything else goes wrong report to issues, ty.  
+
+
