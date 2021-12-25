@@ -1,10 +1,7 @@
-# **UIC Class Yoinker v1.1.0 is out!**
-## **Notes:**
--  v1.1.0 is the outlook version. Gmail version coming soon
--  The normal version where you enter CRN manually is v1.0.1 in the "other versions" section.
+# **UIC Class Yoinker v1.1.0 (Gmail/Outlook) is out!**
 ## **Updates**
 -  added batch files to automatically installs package.
--  added outlook support
+-  added Gmail and Outlook support
 ## **How to use :**
 -  Make sure to have installed python (the one from windows store is recommended)
 -  Make sure to have install outlook (for the people that works in the school and have to use outlook as their UIC mail)
