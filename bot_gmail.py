@@ -98,6 +98,7 @@ def registrer(CRN_num, netID, password):
         browser.find_element(By.XPATH, '//*[@id="addCRNbutton"]').click()
         # uncomment the line down below to actually submit it. or do it yourself
         browser.find_element(By.ID, 'saveButton').click()
+        time.sleep(1)
         print('Yoinked successfully')
     except:
         print('Something went wrong with the CRN: ' + str(CRN_num[1:]))
