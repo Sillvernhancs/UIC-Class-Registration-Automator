@@ -75,12 +75,13 @@ def registrer(CRN_num, netID, password):
     reg = browser.window_handles[1]
     browser.switch_to.window(reg)
     # click on the semester
-    browser.find_element(By.XPATH, '/html/body/main/div[2]/div[2]/div/div/ul/li[3]/a').click()
+    browser.find_element(By.ID, 'registerLink').click()
     browser.find_element(By.XPATH, '//*[@id="IdPList"]/input[1]').click()
     browser.find_element(By.XPATH, '//*[@id="s2id_txt_term"]').click()
     browser.implicitly_wait(100)
     browser.find_element(By.XPATH, '/html/body/div[8]/ul/li[1]/div').click()
     browser.find_element(By.XPATH, '//*[@id="term-go"]').click()
+    browser.implicitly_wait(100)
     browser.find_element(By.XPATH, '//*[@id="enterCRNs-tab"]').click()
     # string manipulation for each CRN text field
     crn_txt = '//*[@id="txt_crn1"]'
