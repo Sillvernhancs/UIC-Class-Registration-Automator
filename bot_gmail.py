@@ -1,3 +1,4 @@
+from io import StringIO
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common import by
@@ -7,7 +8,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
 #/////////////////////////////////////////////////////////////////////
-import win32com.client
+# gmail imports
+import imaplib
+import email
+from email.header import decode_header
+import webbrowser
+import os
 # /////////////////////////////////////////////////////////////////////
 # Helper functions
 # close all tabs
@@ -104,21 +110,51 @@ def registrer(CRN_num, netID, password):
 print("/////////////////////////////////")
 netID    = input("NetID   : ")
 password = input("Password: ")
-print("/////////////////////////////////")
+# check login
 login(netID, password)
-print('Waiting for a CRN notification...')
+print("/////////////////////////////////////////////////////////////////////////////////////////////")
 while True:
-    ol = win32com.client.Dispatch( "Outlook.Application")
-    inbox = ol.GetNamespace("MAPI").GetDefaultFolder(6)
-    messages = inbox.Items
-    message_current = messages.GetLast()
-
-    if (message_current.UnRead == True) and ('There are open seats or a waitlist space' in message_current.Body):
-        message_current.UnRead = False
-        CRN = message_current.Body[message_current.Body.find('(CRN: ') + 5:message_current.Body.find('(CRN: ') + 11]
-        print ('Adding CRN: ' + CRN)
-        registrer(CRN, netID, password)
+    username       = input("Gmail   : ")
+    genrted_password = input("Password generated from Google App password: ")
+    print("/////////////////////////////////////////////////////////////////////////////////////////////")
+    # authenticate
+    mail = imaplib.IMAP4_SSL('imap.gmail.com')
+    try:
+        mail.login(username, genrted_password)
+        print('Gmail login sucessful!')
+        print('waiting for open seat notification...')
+        break
+    except:
+        print('Gmail login failed, try again...')
+        continue
+#select inbox
+CRN = -1
+while True:
+    #select specific mails
+    mail.select("INBOX")
+    _, selected_mails = mail.search(None, '(UNSEEN)')
+    first_mail = selected_mails[0].split()[-1:]
+    for num in first_mail:
+        _, data = mail.fetch(num , '(RFC822)')
+        _, bytes_data = data[0]
+        #convert the byte data to message
+        email_message = email.message_from_bytes(bytes_data)
+        # print the email contents, just for debug/trouble shoot
+        # print("Subject: ",email_message["subject"])
+        # print("To:", email_message["to"])
+        # print("From: ",email_message["from"])
+        # print("Date: ",email_message["date"])
+        for part in email_message.walk():
+            if part.get_content_type()=="text/plain" or part.get_content_type()=="text/html":
+                message = part.get_payload(decode=True)
+                message_txt = message.decode()
+                if 'There are open seats or a waitlist space' in message_txt:
+                    CRN = message_txt[message_txt.find('(CRN: ') + 5:message_txt.find('(CRN: ') + 11]
+                    print ('>> Adding CRN: ' + CRN) 
+                    registrer(CRN, netID, password)
+                break
     time.sleep(5)
 
-
+# imap.close()
+# imap.logout()
 
