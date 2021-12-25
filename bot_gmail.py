@@ -148,8 +148,8 @@ while True:
                 message = part.get_payload(decode=True)
                 message_txt = message.decode()
                 if 'There are open seats or a waitlist space' in message_txt:
-                    print ('>> Adding CRN: ' + CRN) 
                     CRN = message_txt[message_txt.find('(CRN: ') + 5:message_txt.find('(CRN: ') + 11]
+                    print ('>> Adding CRN: ' + CRN) 
                     registrer(CRN, netID, password)
                 break
     time.sleep(5)
