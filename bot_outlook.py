@@ -82,10 +82,9 @@ def registrer(CRN_num, netID, password):
     browser.implicitly_wait(100)
     browser.find_element(By.XPATH, '//*[@id="s2id_txt_term"]').click()
     browser.implicitly_wait(100)
-    # browser.find_element(By.XPATH, '/html/body/div[8]/ul/li[1]/div').click()
-    browser.find_element(By.XPATH,"//*[contains(text(), 'Continue')]").click()
+    browser.find_element(By.XPATH, '/html/body/div[8]/ul/li[1]/div').click()
     browser.implicitly_wait(100)
-    browser.find_element(By.XPATH, '//*[@id="term-go"]').click()
+    browser.find_element(By.XPATH,"//*[contains(text(), 'Continue')]").click()
     browser.implicitly_wait(100)
     browser.find_element(By.XPATH, '//*[@id="enterCRNs-tab"]').click()
     # string manipulation for each CRN text field
