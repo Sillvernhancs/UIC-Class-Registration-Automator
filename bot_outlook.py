@@ -1,3 +1,4 @@
+from sys import exc_info
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common import by
@@ -117,7 +118,12 @@ while True:
         message_current.UnRead = False
         CRN = message_current.Body[message_current.Body.find('(CRN: ') + 5:message_current.Body.find('(CRN: ') + 11]
         print ('Adding CRN: ' + CRN)
-        registrer(CRN, netID, password)
+        try:
+            registrer(CRN, netID, password)
+        except exc_info:
+            print("Error: ", exc_info)
+            print("_______________________________________________________")
+            print("something went wrong.... but we'll keep the bot alive")
     time.sleep(5)
 
 
