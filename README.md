@@ -1,9 +1,14 @@
-# **UIC Class Yoinker v1.1.1 (Gmail/Outlook) is out!**
+# **UIC Class Yoinker v1.1.2 Upadte**
 ## **Updates**
--  added batch files to automatically installs package.
--  added Gmail and Outlook support
+-   updated chromedriver to chromedriver 104
+-   added documentation on chromedriver to keep the bot functional
 #### All versions:
 https://github.com/Sillvernhancs/UIC-class-yoinker/releases
+## **Important thing on Chromedriver:**
+
+-   Check your chrome browser version (must be 104 since it's included in this bot's version)
+-   Alternatively, after you check your chrome browser version, head to: https://chromedriver.chromium.org/downloads
+    and download the version that **matches** your current chrome browser version
 ## **How to use the bot wit Gmail:**
 
 -  Head to [Google App Password](https://myaccount.google.com/apppasswords)
