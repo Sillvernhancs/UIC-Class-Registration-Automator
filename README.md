@@ -8,7 +8,7 @@ https://github.com/Sillvernhancs/UIC-class-yoinker/releases
 
 -   Check your chrome browser version (must be 104 since it's included in this bot's version)
 -   Alternatively, after you check your chrome browser version, head to: https://chromedriver.chromium.org/downloads
-    and download the version that **matches** your current chrome browser version
+    and download the version that **matches** your current chrome browser version and put it in the same folder as the bot.
 ## **How to use the bot wit Gmail:**
 
 -  Head to [Google App Password](https://myaccount.google.com/apppasswords)
