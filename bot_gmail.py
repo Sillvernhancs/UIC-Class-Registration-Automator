@@ -148,9 +148,12 @@ while True:
         for part in email_message.walk():
             if part.get_content_type()=="text/plain" or part.get_content_type()=="text/html":
                 message = part.get_payload(decode=True)
-                message_txt = message.decode()
+                try: message_txt = message.decode()
+                except: continue
                 if 'There are open seats or a waitlist space' in message_txt:
                     CRN = message_txt[message_txt.find('(CRN: ') + 5:message_txt.find('(CRN: ') + 11]
+                    try: crn = int(CRN)
+                    except: continue
                     print ('>> Adding CRN: ' + CRN) 
                     registrer(CRN, netID, password)
                 break
