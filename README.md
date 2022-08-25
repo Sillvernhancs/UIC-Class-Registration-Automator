@@ -17,7 +17,7 @@ https://github.com/Sillvernhancs/UIC-class-yoinker/releases
 -   Copy the password that it gives you and keep it somewhere save, do not share that with anyone.
 -   Download and unzip the bot, and run 'run_gmail.bat'
 -   Type in NetID and password
--   Type in Gmail and past in the generated password from google app password
+-   Type in Gmail and paste in the generated password from google app password
 -   The bot will now wait until there's a notification for open seats and will start yoinking it.
 
 ## **How to use the bot with Outlook:**
