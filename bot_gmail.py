@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
+import getpass
 #/////////////////////////////////////////////////////////////////////
 # gmail imports
 import imaplib
@@ -110,13 +111,13 @@ def registrer(CRN_num, netID, password):
 # get user credentials
 print("/////////////////////////////////")
 netID    = input("NetID   : ")
-password = input("Password: ")
+password = getpass.getpass("Password: ")
 # check login
 login(netID, password)
 print("/////////////////////////////////////////////////////////////////////////////////////////////")
 while True:
     username       = input("Gmail   : ")
-    genrted_password = input("Password generated from Google App password: ")
+    genrted_password = getpass.getpass("Password generated from Google App password: ")
     print("/////////////////////////////////////////////////////////////////////////////////////////////")
     # authenticate
     mail = imaplib.IMAP4_SSL('imap.gmail.com')
