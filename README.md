@@ -1,7 +1,8 @@
-# **UIC Class Yoinker v1.1.2 Update**
+# **UIC Class Yoinker v1.1.3 Update**
 ## **Updates**
 -   updated chromedriver to chromedriver 104
 -   added documentation on chromedriver to keep the bot functional
+-   fixed a bot crashing issue
 #### All versions:
 https://github.com/Sillvernhancs/UIC-class-yoinker/releases
 ## **Important thing on Chromedriver:**
