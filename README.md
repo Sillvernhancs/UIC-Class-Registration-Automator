@@ -1,4 +1,4 @@
-# **UIC Class Yoinker v1.1.3 Update**
+# **UIC Class Registration Automator v1.1.3 Update**
 ## **Updates**
 -   updated chromedriver to chromedriver 104
 -   added documentation on chromedriver to keep the bot functional
